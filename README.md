@@ -29,15 +29,25 @@ Modern vision-language-action (VLA) models and whole-body control loops optimize
 * `harbor_l3_eval.py`: Standalone Python simulation kernel featuring the 3-step walking horizon, context grammar switching, hardware confidence curve, and temporal hysteresis (anti-chatter filter).
 
 ## Quick Start (Simulation Testbench)
-Clone the repository and run the simulation test script directly in your terminal:
-Contact & Inquiries
-Principal Investigator: Donnie Whitbeck
 
-Entity: GS Upstream Labs / Upstream AI Perspective Lab™ (Las Vegas, NV)
+Clone the repository and run the baseline simulation script directly in your terminal:
 
-Email: whitbeckrocks@gmail.com
-
-Phone: (310) 994-9496
-``
-`bash
+```bash
 python harbor_l3_eval.py
+```
+
+---
+
+## Closed-Loop Simulation Testbench (`v4`)
+
+### Repository Files
+* `harbor_l3_eval.py`: Earlier baseline evaluation script preserved for historical reference.
+* `harbor_l3_v4.py`: Advisory governance kernel (`HarborAdvisoryKernelV4`) with configurable `min_usable_confidence` gating, expanded `EpistemicGapReport` (separating supporting evidence, uncertainties, changes, and needed observations), trajectory-aware `proposed_closest_approach_m`, and `evaluate_authorization(...)`.
+* `kitchen_water_experiment_v4.py`: Deterministic closed-loop kitchen water-delivery testbench (`ClosedLoopKitchenWorld`) comparing a conventional controller + shared safety floor (Road A) against the same controller with Harbor v4 advisory and authorization (Road B).
+* `test_harbor_l3_v4.py`: Unit and scenario test suite covering confidence gating, trajectory clearance, authority boundaries, and four closed-loop world configurations.
+
+### Running the `v4` Tests and Scenarios
+Run the unit and scenario test suite:
+
+```bash
+python -m unittest -v test_harbor_l3_v4.py
